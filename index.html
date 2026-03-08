@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XO Boutique Bakery | Best Brunch & Pastries in Victoria Island Lagos</title>
+  <meta name="description" content="XO Boutique Bakery is a cozy brunch café in Victoria Island Lagos serving fresh pastries, artisan coffee, desserts, and all day breakfast." />
+  <meta name="keywords" content="xo bakery lagos, xo boutique bakery, best brunch victoria island, bakery victoria island lagos" />
+  <meta property="og:title" content="XO Boutique Bakery | Victoria Island Lagos" />
+  <meta property="og:description" content="Fresh pastries, artisan coffee, desserts, and all day brunch in the heart of Victoria Island, Lagos." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts & CSS-->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="/images/logo3.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<!-- ─── NAVBAR ──────────────────────────────── -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <div class="nav-logo" onclick="showPage('home')">
+        <div class="logo-img-wrap">
+          <img src="/images/logo3.png" alt="XO Bakery Logo" id="logo-img" style="display:block" />
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="serif" font-size="22" font-weight="600" fill="#E6D3A3">XO</text>
+          </svg>
+        </div>
+        <span class="logo-text" style="line-height:0.9;">Boutique<br>Bakery</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#" onclick="showPage('home');return false;">Home</a></li>
+        <li><a href="#" onclick="showPage('menu');return false;">Menu</a></li>
+        <li><a href="#" onclick="showPage('gallery');return false;">Gallery</a></li>
+        <li><a href="#" onclick="showPage('about');return false;">About</a></li>
+        <li><a href="#" onclick="showPage('visit');return false;">Visit</a></li>
+        <li><a class="nav-order" href="https://wa.me/2349091111902" target="_blank">Order Now</a></li>
+      </ul>
+      <div class="nav-hamburger" id="hamburger" onclick="toggleMobile()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" onclick="toggleMobile()">✕</button>
+  <a href="#" onclick="showPage('home');toggleMobile();return false;">Home</a>
+  <a href="#" onclick="showPage('menu');toggleMobile();return false;">Menu</a>
+  <a href="#" onclick="showPage('gallery');toggleMobile();return false;">Gallery</a>
+  <a href="#" onclick="showPage('about');toggleMobile();return false;">About</a>
+  <a href="#" onclick="showPage('visit');toggleMobile();return false;">Visit Us</a>
+  <a href="#" onclick="showPage('order');toggleMobile();return false;">Order</a>
+</div>
+
+<!-- ─── LIGHTBOX ─────────────────────────────── -->
+<div id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-nav" id="lb-prev" onclick="lbNav(-1)">‹</button>
+  <img id="lb-img" src="" alt="Gallery" />
+  <button class="lb-nav" id="lb-next" onclick="lbNav(1)">›</button>
+</div>
+
+<!-- ─── FLOATING WHATSAPP ──────────────────── -->
+<a href="https://wa.me/2349091111902" target="_blank" id="wa-float" aria-label="Order on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<!-- ══════════════════════════════════════════
+     HOME PAGE
+════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg" id="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content">
+        <!-- <p class="hero-eyebrow" id="h-eyebrow">Victoria Island, Lagos</p> -->
+        <h1 class="hero-title" id="h-title">Fresh pastries.<br><em>Beautiful brunch.</em><br>Welcome to XO.</h1>
+        <p class="hero-sub" id="h-sub">Experience Victoria Island's favourite boutique bakery — serving artisan pastries, all‑day brunch, specialty coffee, and indulgent desserts.</p>
+        <div class="hero-actions" id="h-actions">
+          <a href="https://wa.me/2349091111902" target="_blank" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Order on WhatsApp
+          </a>
+          <button class="btn btn-outline" onclick="showPage('menu')">View Menu</button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-bar">
+    <div class="ticker-track" id="ticker-track">
+      <span>Fresh Pastries</span><span class="ticker-dot">✦</span>
+      <span>Artisan Coffee</span><span class="ticker-dot">✦</span>
+      <span>All-Day Brunch</span><span class="ticker-dot">✦</span>
+      <span>Indulgent Desserts</span><span class="ticker-dot">✦</span>
+      <span>Victoria Island, Lagos</span><span class="ticker-dot">✦</span>
+      <span>Custom Cakes</span><span class="ticker-dot">✦</span>
+      <span>Gift Boxes</span><span class="ticker-dot">✦</span>
+      <span>Dine In &amp; Takeaway</span><span class="ticker-dot">✦</span>
+      <!-- duplicate for loop -->
+      <span>Fresh Pastries</span><span class="ticker-dot">✦</span>
+      <span>Artisan Coffee</span><span class="ticker-dot">✦</span>
+      <span>All-Day Brunch</span><span class="ticker-dot">✦</span>
+      <span>Indulgent Desserts</span><span class="ticker-dot">✦</span>
+      <span>Victoria Island, Lagos</span><span class="ticker-dot">✦</span>
+      <span>Custom Cakes</span><span class="ticker-dot">✦</span>
+      <span>Gift Boxes</span><span class="ticker-dot">✦</span>
+      <span>Dine In &amp; Takeaway</span><span class="ticker-dot">✦</span>
+    </div>
+  </div>
+
+  <!-- INTRO SECTION 
+  <section>
+    <div class="container">
+      <div id="intro">
+        <div class="intro-text reveal">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title">A little corner<br><em>of paradise</em></h2>
+          <blockquote>"The newly expanded XO. Enjoy your favourites in our little corner of paradise."</blockquote>
+          <p class="section-subtitle">Cozy, airy, and designed for moments that matter — whether it's a weekend brunch with friends or a quiet morning coffee.</p>
+          <div class="intro-stats">
+            <div>
+              <div class="stat-num">7+</div>
+              <div class="stat-label">Years of Love</div>
+            </div>
+            <div>
+              <div class="stat-num">50+</div>
+              <div class="stat-label">Menu Items</div>
+            </div>
+            <div>
+              <div class="stat-num">VI</div>
+              <div class="stat-label">Lagos Landmark</div>
+            </div>
+          </div>
+        </div>
+        <div class="intro-image reveal" style="transition-delay:.15s">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80" alt="XO Bakery interior" loading="lazy" />
+          <div class="intro-badge">
+            <p>Open Today</p>
+            <strong>8 AM – 8:30 PM</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- HORIZONTAL SCROLL — PASTRIES -->
+  <section class="hscroll-section">
+    <div class="container">
+      <div class="hscroll-header">
+        <div>
+          <p class="section-label reveal">Freshly Baked</p>
+          <h2 class="section-title reveal">Our Pastries</h2>
+        </div>
+        <button class="btn btn-coffee-outline reveal" onclick="showPage('menu')">View Full Menu</button>
+      </div>
+    </div>
+    <div class="hscroll-track" id="hscroll-pastries">
+      <div class="hscroll-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="images/IMG11.jpg" alt="Croissants" loading="lazy" />
+        <span class="card-label">Butter Croissant</span>
+      </div>
+      
+      <div class="hscroll-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="images/IMG40.jpg" alt="Dessert" loading="lazy" />
+        <span class="card-label">Tarts & Desserts</span>
+      </div>
+
+      <div class="hscroll-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="images/IMG8.jpg" alt="Pancakes" loading="lazy" />
+        <span class="card-label">Burger</span>
+      </div>
+
+      <div class="hscroll-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="images/IMG16.jpg" alt="Coffee" loading="lazy" />
+        <span class="card-label">Beverages</span>
+      </div>
+      <div class="hscroll-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="images/IMG13.jpg" alt="Cheesecake" loading="lazy" />
+        <span class="card-label">Cheesecake</span>
+      </div>
+      <div class="hscroll-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="images/IMG9.jpg" alt="Donuts" loading="lazy" />
+        <span class="card-label">Donuts</span>
+      </div>
+      <div class="hscroll-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="images/IMG43.jpg" alt="Brunch Bowl" loading="lazy" />
+        <span class="card-label">Brunch Bowl</span>
+      </div>
+      <div class="hscroll-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="images/IMG10.jpg" alt="Cake" loading="lazy" />
+        <span class="card-label">Cakes</span>
+      </div>
+       <div class="hscroll-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="images/IMG44.jpg" alt="Cake" loading="lazy" />
+        <span class="card-label">Chops</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU PREVIEW -->
+  <section id="menu-preview">
+    <div class="container">
+      <div class="menu-preview-head">
+        <p class="section-label reveal">What We Serve</p>
+        <h2 class="section-title reveal">A taste of the menu</h2>
+        <p class="section-subtitle reveal">Every item crafted with care, from our flaky morning pastries to late evening desserts.</p>
+      </div>
+      <div class="menu-tabs reveal">
+        <button class="tab-btn active" onclick="filterMenu('all',this)">All</button>
+        <button class="tab-btn" onclick="filterMenu('brunch',this)">Brunch</button>
+        <button class="tab-btn" onclick="filterMenu('pastry',this)">Pastries</button>
+        <button class="tab-btn" onclick="filterMenu('savoury',this)">Savoury</button>
+        <button class="tab-btn" onclick="filterMenu('drink',this)">Beverages</button>
+      </div>
+      <div class="menu-grid" id="menu-grid-preview"></div>
+    </div>
+  </section>
+
+  <!-- FEATURE STRIP -->
+  <section id="features">
+    <div class="feature-visual">
+      <img src="images/IMG31.jpg" alt="XO Bakery Ambience" loading="lazy" />
+    </div>
+    <div class="feature-list">
+      <div>
+        <p style="font-family:var(--font-ui);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;">Why XO</p>
+        <h2 style="font-family:var(--font-display);font-size:2.2rem;color:var(--cream);font-weight:400;line-height:1.2;">Everything you love<br><em>in one place</em></h2>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-icon">🥐</div>
+        <div>
+          <p class="feature-label">Baked Fresh</p>
+          <p class="feature-title">Artisan Pastries Daily</p>
+          <p class="feature-desc">Every croissant, tart, and pastry baked fresh each morning in our kitchen.</p>
+        </div>
+      </div>
+      <div class="feature-item reveal" style="transition-delay:.1s">
+        <div class="feature-icon">☕</div>
+        <div>
+          <p class="feature-label">Specialty</p>
+          <p class="feature-title">Artisan Coffee Bar</p>
+          <p class="feature-desc">From single-origin espresso to matcha lattes and hand-crafted frappés.</p>
+        </div>
+      </div>
+      <div class="feature-item reveal" style="transition-delay:.2s">
+        <div class="feature-icon">🌿</div>
+        <div>
+          <p class="feature-label">Atmosphere</p>
+          <p class="feature-title">Calm, Airy Space</p>
+          <p class="feature-desc">Designed to feel like a peaceful retreat in the heart of Victoria Island.</p>
+        </div>
+      </div>
+      <div class="feature-item reveal" style="transition-delay:.3s">
+        <div class="feature-icon">📦</div>
+        <div>
+          <p class="feature-label">Convenience</p>
+          <p class="feature-title">Delivery & Custom Orders</p>
+          <p class="feature-desc">Order via WhatsApp or our delivery partners — Chowdeck, Glovo, and more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MASONRY GALLERY PREVIEW -->
+  <section id="gallery-home">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;">
+        <div>
+          <p class="section-label reveal">Visual Stories</p>
+          <h2 class="section-title reveal">The XO Experience</h2>
+        </div>
+        <button class="btn btn-coffee-outline reveal" onclick="showPage('gallery')">View Gallery</button>
+      </div>
+      <div class="masonry" id="masonry-home"></div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM SECTION -->
+  <section id="instagram">
+    <div class="container">
+      <p class="section-label reveal">Follow Along</p>
+      <h2 class="section-title reveal" style="margin-bottom:.5rem">@xobakery</h2>
+      <p class="instagram-handle reveal"><a href="https://instagram.com/xobakery" target="_blank">Follow us on Instagram</a> for daily pastry drops, specials & café life</p>
+      <div class="instagram-grid" id="ig-grid"></div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section id="cta-band">
+    <div class="cta-bg"></div>
+    <div class="container cta-content">
+      <p class="section-label reveal">Ready to Visit?</p>
+      <h2 class="section-title reveal">Your table is waiting.</h2>
+      <p class="section-subtitle reveal">Dine in, take away, or order to your door — XO makes every moment feel special.</p>
+      <div class="cta-actions reveal">
+        <a href="https://wa.me/2349091111902" target="_blank" class="btn btn-primary">Order on WhatsApp</a>
+        <button class="btn btn-outline" onclick="showPage('visit')">Find Us</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end home page -->
+
+
+<!-- ══════════════════════════════════════════
+     MENU PAGE
+════════════════════════════════════════════ -->
+<div id="page-menu" class="page">
+  <div class="menu-page-hero">
+    <div class="container">
+      <!-- <p class="section-label">Our Kitchen</p> 
+      <h1 class="section-title">The Menu</h1> 
+      <p class="section-subtitle" style="margin:0 auto">Freshly prepared, thoughtfully crafted — from morning croissants to late evening desserts.</p> -->
+    </div> 
+  </div> 
+
+  <div class="container">
+    <!-- Breakfast & Brunch -->
+    <div class="menu-section">
+      <h2 class="menu-section-title"><div class="menu-section-icon">🍳</div> Breakfast &amp; Brunch</h2>
+      <div class="menu-list" id="menu-brunch-full"></div>
+    </div>
+    <!-- Savoury -->
+    <div class="menu-section" style="background:var(--beige);border-radius:24px;padding:3rem;">
+      <h2 class="menu-section-title"><div class="menu-section-icon">🍔</div> Savoury</h2>
+      <div class="menu-list" id="menu-savoury-full"></div>
+    </div>
+    <!-- Pastries & Desserts -->
+    <div class="menu-section">
+      <h2 class="menu-section-title"><div class="menu-section-icon">🥐</div> Pastries &amp; Desserts</h2>
+      <div class="menu-list" id="menu-pastry-full"></div>
+    </div>
+    <!-- Beverages -->
+    <div class="menu-section" style="background:var(--beige);border-radius:24px;padding:3rem;margin-bottom:4rem;">
+      <h2 class="menu-section-title"><div class="menu-section-icon">☕</div> Beverages</h2>
+      <div class="menu-list" id="menu-drink-full"></div>
+    </div>
+  </div>
+
+  <section id="cta-band" style="margin-top:0">
+    <div class="cta-bg"></div>
+    <div class="container cta-content">
+      <p class="section-label">Ready to Order?</p>
+      <h2 class="section-title">Let us bring the flavour to you.</h2>
+      <div class="cta-actions" style="margin-top:2rem">
+        <a href="https://wa.me/2349091111902" target="_blank" class="btn btn-primary">Order on WhatsApp</a>
+        <button class="btn btn-outline" onclick="showPage('order')">Delivery Options</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     GALLERY PAGE
+════════════════════════════════════════════ -->
+<div id="page-gallery" class="page">
+  <div class="gallery-page-hero">
+    <div class="gallery-page-hero-content">
+      <p class="section-label">Visual Diary</p>
+      <h1 class="section-title" style="color:var(--cream)">The Gallery</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="gallery-filters" id="gallery-filters">
+      <button class="filter-btn active" onclick="filterGallery('all',this)">All</button>
+      <!-- <button class="filter-btn" onclick="filterGallery('pastries',this)">Pastries</button> 
+      <button class="filter-btn" onclick="filterGallery('desserts',this)">Desserts</button>
+      <button class="filter-btn" onclick="filterGallery('brunch',this)">Brunch Plates</button> -->
+      <button class="filter-btn" onclick="filterGallery('interior',this)">Interior</button>
+      <button class="filter-btn" onclick="filterGallery('coffee',this)">Coffee</button>
+    </div>
+    <div class="masonry" id="masonry-gallery" style="padding-bottom:5rem;"></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     ABOUT PAGE
+════════════════════════════════════════════ -->
+<div id="page-about" class="page">
+  <div class="about-hero">
+    <div class="about-hero-content">
+      <p class="section-label" style="color:var(--gold)">Our Story</p>
+      <h1 class="section-title" style="color:var(--cream)">Born from a love<br><em>of good food</em></h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="about-story">
+      <div class="about-story-text">
+        <p>XO Boutique Bakery is a cozy boutique café in Victoria Island known for fresh pastries, indulgent desserts, and all‑day brunch favourites.</p>
+        <p>Our space was designed to feel calm, airy, and welcoming. Whether you are meeting friends for brunch, grabbing coffee before work, or enjoying dessert after dinner, XO offers a relaxed escape in the heart of Lagos.</p>
+        <p>Every item on our menu is made with intention — sourced carefully, prepared with skill, and served with warmth. From our flaky butter croissants to our signature cheesecakes, we believe food should be a moment to savour.</p>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="https://wa.me/2349091111902" target="_blank" class="btn btn-primary">Order Now</a>
+          <button class="btn btn-coffee-outline" onclick="showPage('visit')">Visit Us</button>
+        </div>
+      </div>
+      <div class="about-images">
+        <div class="ai-1"><img src="images/IMG22.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="ai-2"><img src="images/IMG3.jpg" alt="Pastries" loading="lazy" /></div>
+        <div class="ai-3"><img src="images/IMG18.jpg" alt="Coffee" loading="lazy" /></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="about-values">
+    <div class="container">
+      <p class="section-label">What drives us</p>
+      <h2 class="section-title">Our values</h2>
+      <div class="values-grid">
+        <div class="value-card reveal">
+          <div class="value-num">01</div>
+          <div class="value-title">Quality First</div>
+          <div class="value-desc">We use only the finest ingredients, from locally sourced produce to premium imported chocolates and coffees.</div>
+        </div>
+        <div class="value-card reveal" style="transition-delay:.1s">
+          <div class="value-num">02</div>
+          <div class="value-title">Made with Love</div>
+          <div class="value-desc">Each item is crafted by hand, with care and precision. We bake fresh every single morning.</div>
+        </div>
+        <div class="value-card reveal" style="transition-delay:.2s">
+          <div class="value-num">03</div>
+          <div class="value-title">Welcoming Space</div>
+          <div class="value-desc">XO was built to be a sanctuary — a calm, airy escape where everyone feels at home.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carousel -->
+  <section style="padding:6rem 0;background:var(--cream)">
+    <div class="container">
+      <p class="section-label" style="text-align:center">Inside XO</p>
+      <h2 class="section-title" style="text-align:center;margin-bottom:2.5rem">A glimpse of our world</h2>
+      <div class="carousel-wrap" id="about-carousel">
+        <div class="carousel-track" id="about-c-track">
+          <div class="carousel-slide"><img src="images/IMG36.jpg" alt="Café" loading="lazy"/></div>
+          <div class="carousel-slide"><img src="images/IMG21.jpg" alt="Coffee" loading="lazy"/></div>
+          <!--<div class="carousel-slide"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80" alt="Food" loading="lazy"/></div> -->
+          <!--<div class="carousel-slide"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=1200&q=80" alt="Cake" loading="lazy"/></div> -->
+          <div class="carousel-slide"><img src="images/IMG43.jpg" alt="food1" loading="lazy"/></div>
+          <div class="carousel-slide"><img src="images/IMG23.jpg" alt="food2" loading="lazy"/></div>
+        </div>
+        <div class="carousel-dots" id="about-dots"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     VISIT PAGE
+════════════════════════════════════════════ -->
+<div id="page-visit" class="page">
+  <div class="visit-hero">
+    <div class="container" style="text-align:center">
+      <p class="section-label">Find Us</p>
+      <h1 class="section-title">Plan Your Visit</h1>
+      <p class="section-subtitle" style="margin:1rem auto 2rem">We'd love to have you. Drop in for brunch, coffee, or an afternoon treat.</p>
+      <a href="https://maps.app.goo.gl/yRRjn7A5rSAKVeQy6" target="_blank" class="btn btn-primary">Get Directions</a>
+    </div>
+  </div> 
+
+  <div class="container">
+    <div class="visit-content">
+      <div class="visit-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.729!2d3.4306!3d6.4281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMjUnNDEuMiJOIDPCsDI1JzUwLjIiRQ!5e0!3m2!1sen!2sng!4v1710000000000!5m2!1sen!2sng"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+      <div class="visit-info">
+        <div class="visit-info-item">
+          <div class="visit-icon">📍</div>
+          <div>
+            <p class="visit-info-label">Address</p>
+            <p class="visit-info-text">266C Kofo Abayomi Street<br>Victoria Island, Lagos, Nigeria</p>
+          </div>
+        </div>
+        <div class="visit-info-item">
+          <div class="visit-icon">🕐</div>
+          <div>
+            <p class="visit-info-label">Opening Hours</p>
+            <div class="hours-row"><strong>Monday – Saturday</strong> <span>8:00 AM – 8:30 PM</span></div>
+            <div class="hours-row"><strong>Sunday</strong> <span>10:00 AM – 8:30 PM</span></div>
+          </div>
+        </div>
+        <div class="visit-info-item">
+          <div class="visit-icon">💬</div>
+          <div>
+            <p class="visit-info-label">WhatsApp</p>
+            <p class="visit-info-text"><a href="https://wa.me/2349091111902" style="color:var(--coffee);font-weight:500">+234 909 111 1902</a></p>
+          </div>
+        </div>
+        <div class="visit-info-item">
+          <div class="visit-icon">📸</div>
+          <div>
+            <p class="visit-info-label">Instagram</p>
+            <p class="visit-info-text"><a href="https://instagram.com/xobakery" target="_blank" style="color:var(--coffee);font-weight:500">@xobakery</a></p>
+          </div>
+        </div>
+        <div class="visit-info-item" style="border-bottom:none">
+          <div class="visit-icon">🚗</div>
+          <div>
+            <p class="visit-info-label">Services</p>
+            <p class="visit-info-text">Dine In · Takeaway · Delivery · Custom Orders · Gift Boxes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     ORDER PAGE
+════════════════════════════════════════════ -->
+<div id="page-order" class="page">
+  <div class="order-hero">
+    <div class="container">
+      <p class="section-label">Place an Order</p>
+      <h1 class="section-title">Order from XO</h1>
+      <p class="section-subtitle">Fresh pastries, brunch favourites, and more — delivered or ready for pickup.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="order-main">
+      <div class="order-whatsapp-card">
+        <div class="wa-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+        </div>
+        <h2 class="wa-title">Order on WhatsApp</h2>
+        <p class="wa-sub">The fastest way to place your order. Message us directly and we'll handle the rest — quickly and personally.</p>
+        <a href="https://wa.me/2349091111902" target="_blank" class="btn-white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+      <div class="order-delivery">
+        <h2 class="delivery-title">Also available on</h2>
+        <div class="delivery-card" onclick="window.open('https://chowdeck.com','_blank')">
+          <div class="delivery-logo">🍽️</div>
+          <div>
+            <p class="delivery-name">Chowdeck</p>
+            <p class="delivery-desc">Search for XO Boutique Bakery on Chowdeck</p>
+          </div>
+          <span class="delivery-arrow">→</span>
+        </div>
+        <div class="delivery-card" onclick="window.open('https://glovo.com','_blank')">
+          <div class="delivery-logo">🛵</div>
+          <div>
+            <p class="delivery-name">Glovo</p>
+            <p class="delivery-desc">Find us on Glovo for fast delivery</p>
+          </div>
+          <span class="delivery-arrow">→</span>
+        </div>
+        <div class="delivery-card" onclick="window.open('https://wa.me/2349091111902','_blank')">
+          <div class="delivery-logo">📦</div>
+          <div>
+            <p class="delivery-name">Direct WhatsApp</p>
+            <p class="delivery-desc">Custom orders, gifting & bulk orders</p>
+          </div>
+          <span class="delivery-arrow">→</span>
+        </div>
+        <div style="margin-top:2rem;padding:1.5rem;background:var(--beige);border-radius:16px;">
+          <p style="font-family:var(--font-ui);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--coffee);margin-bottom:.5rem;">Custom Orders & Gift Boxes</p>
+          <p style="color:var(--grey);line-height:1.7;font-size:1rem;">Planning a celebration? We offer custom cakes, curated gift boxes, and catering for events. <a href="https://wa.me/2349091111902" target="_blank" style="color:var(--coffee);font-weight:500">Message us on WhatsApp</a> to discuss your needs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ─── FOOTER ──────────────────────────────── -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-text"><span>XO</span> Boutique Bakery</div>
+        <p class="footer-tagline">"The newly expanded XO. Enjoy your favourites in our little corner of paradise."</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/xobakery" target="_blank" class="social-btn" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://wa.me/2349091111902" target="_blank" class="social-btn" aria-label="WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Navigate</p>
+        <ul class="footer-links">
+          <li><a href="#" onclick="showPage('home');return false;">Home</a></li>
+          <li><a href="#" onclick="showPage('menu');return false;">Menu</a></li>
+          <li><a href="#" onclick="showPage('gallery');return false;">Gallery</a></li>
+          <li><a href="#" onclick="showPage('about');return false;">About</a></li>
+          <li><a href="#" onclick="showPage('visit');return false;">Visit Us</a></li>
+          <li><a href="#" onclick="showPage('order');return false;">Order</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Opening Hours</p>
+        <div class="footer-hours">
+          <p><span>Mon – Sat</span><span>8:00 – 20:30</span></p>
+          <p><span>Sunday</span><span>10:00 – 20:30</span></p>
+          <p><span>Holidays</span><span>Call ahead</span></p>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Contact</p>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/2349091111902" target="_blank">+234 909 111 1902</a></li>
+          <li><a href="https://instagram.com/xobakery" target="_blank">@xobakery</a></li>
+          <li><a href="https://maps.google.com/?q=266C+Kofo+Abayomi+Street+Victoria+Island+Lagos" target="_blank">266C Kofo Abayomi Street</a></li>
+          <li><a>Victoria Island, Lagos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 XO Boutique Bakery · Victoria Island, Lagos</p>
+      <p>Crafted with ♥ for <a href="#">XO Bakery</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+<script src="control.js"></script>
+</html>
